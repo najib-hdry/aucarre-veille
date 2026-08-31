@@ -1,0 +1,17 @@
+# Specs binaires (fournies hors dépôt)
+*.pdf
+*.zip
+_extract/
+
+# OS / éditeurs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node (à venir)
+node_modules/
+dist/
+build/
+.env
+.env.*
