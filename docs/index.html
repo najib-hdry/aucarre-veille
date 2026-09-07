@@ -13,7 +13,9 @@
   :root{
     --navy:#12202F; --cream:#F6F5F1; --white:#FFFFFF;
     --terra:#C34A2C; --teal:#146062;
-    --line:#DFDCD4; --muted:#5B6873; --ink-soft:#46535F;
+    --line:#D5D1C8; --muted:#5B6873; --ink-soft:#46535F;
+    --shadow-1:0 1px 2px rgba(18,32,47,.06);
+    --shadow-2:0 4px 16px rgba(18,32,47,.10);
   }
   *{box-sizing:border-box}
   body{margin:0}
@@ -38,49 +40,55 @@
   nav.spaces{display:flex;gap:4px;flex-wrap:wrap}
   nav.spaces button{
     border:1.5px solid rgba(246,245,241,.3);background:transparent;color:var(--cream);
-    padding:8px 14px;font-size:14px;cursor:pointer;border-radius:4px
+    padding:9px 15px;min-height:40px;font-size:14px;cursor:pointer;border-radius:4px
   }
   nav.spaces button[aria-pressed="true"]{background:var(--terra);border-color:var(--terra);font-weight:500}
   nav.spaces button:hover{border-color:var(--terra)}
   .me{display:flex;align-items:center;gap:8px;font-size:13px;color:#C9CFD6}
-  .me select{padding:7px 10px;border:1px solid rgba(246,245,241,.35);background:var(--navy);color:var(--cream);border-radius:4px;font-size:13px}
+  .me select{padding:9px 10px;min-height:40px;border:1px solid rgba(246,245,241,.4);background:var(--navy);color:var(--cream);border-radius:4px;font-size:13px}
 
-  main{max-width:1180px;margin:0 auto;padding:28px 20px 64px}
-  .grid-top{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:start}
+  main{max-width:1180px;margin:0 auto;padding:32px 20px 64px}
+  .grid-top{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:start}
   @media(max-width:820px){.grid-top{grid-template-columns:1fr;gap:24px}}
-  .kicker{margin:0 0 4px;font:600 12px/1.2 inherit;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
-  h1{margin:0 0 8px;font-size:32px;line-height:1.1;letter-spacing:-.02em}
-  h2{margin:0;font-size:20px;letter-spacing:-.01em}
-  .lead{margin:0 0 18px;color:var(--ink-soft);max-width:44ch}
+  h1{margin:0 0 8px;font-size:30px;line-height:1.15;letter-spacing:-.02em}
+  h2{margin:0;font-size:19px;line-height:1.25;letter-spacing:-.01em}
+  .lead{margin:0 0 20px;color:var(--ink-soft);max-width:44ch}
 
   /* Search */
-  .searchbar{display:flex;gap:8px;background:var(--white);border:1.5px solid var(--navy);border-radius:999px;padding:5px 5px 5px 18px}
-  .searchbar input{flex:1;min-width:0;border:0;background:transparent;padding:10px 4px;font-size:15px;outline:none}
-  .searchbar button{border:0;background:var(--navy);color:var(--cream);border-radius:999px;padding:11px 22px;font-size:14px;cursor:pointer}
+  .searchbar{display:flex;gap:8px;background:var(--white);border:1.5px solid var(--navy);border-radius:999px;padding:6px 6px 6px 20px}
+  .searchbar input{flex:1;min-width:0;border:0;background:transparent;padding:12px 4px;font-size:15px;outline:none}
+  .searchbar ::placeholder{color:#5B6873;opacity:1}
+  .searchbar button{border:0;background:var(--navy);color:var(--cream);border-radius:999px;padding:13px 24px;min-height:44px;font-size:14px;cursor:pointer}
   .searchbar button:hover{background:var(--terra)}
-  .tagfilter{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .tagfilter{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
   .tagfilter .lbl{font:600 11px/1 inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:2px}
-  .chip{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:6px 11px;font-size:12.5px;cursor:pointer;border-radius:4px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .chip{border:1px solid var(--line);background:var(--white);color:var(--navy);padding:8px 12px;min-height:36px;font-size:12.5px;cursor:pointer;border-radius:4px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
   .chip[aria-pressed="true"]{background:var(--navy);color:var(--cream);border-color:var(--navy)}
   .chip:hover{border-color:var(--navy)}
 
   /* Composer */
   .composer{background:var(--navy);color:var(--cream);padding:24px}
-  .composer h2{color:var(--cream)}
+  .composer > summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .composer > summary::-webkit-details-marker{display:none}
+  .composer > summary h2{color:var(--cream)}
+  .composer > summary::after{content:"–";font-size:20px;color:#C9CFD6;line-height:1}
+  .composer:not([open]) > summary::after{content:"+"}
   .composer form{display:grid;gap:14px;margin-top:16px}
   .composer label,.composer legend{font-size:13px;color:#C9CFD6;display:block;margin-bottom:6px}
   .composer input[type=text],.composer input[type=url],.composer textarea,.composer select{
-    width:100%;border:1px solid rgba(246,245,241,.35);background:#1A2C3E;color:var(--cream);padding:11px 13px;font-size:14px;outline:none;border-radius:4px
+    width:100%;border:1px solid rgba(246,245,241,.4);background:#1A2C3E;color:var(--cream);padding:11px 13px;font-size:14px;outline:none;border-radius:4px
   }
+  .composer ::placeholder{color:#8B97A3;opacity:1}
   .composer input:focus,.composer textarea:focus,.composer select:focus{border-color:#E7A08C}
   .composer textarea{resize:vertical;min-height:70px}
-  .composer fieldset{border:1px solid rgba(246,245,241,.25);padding:10px 12px;border-radius:4px}
-  .composer .bal-opts{display:flex;flex-wrap:wrap;gap:6px 14px}
-  .composer .bal-opts label{display:flex;align-items:center;gap:6px;margin:0;font-family:ui-monospace,Menlo,monospace;font-size:12px}
-  .composer .bal-opts input{accent-color:var(--terra)}
+  .composer fieldset{border:1px solid rgba(246,245,241,.3);padding:10px 12px;border-radius:4px}
+  .composer .bal-opts{display:flex;flex-wrap:wrap;gap:8px 14px}
+  .composer .bal-opts label{display:flex;align-items:center;gap:6px;margin:0;font-family:ui-monospace,Menlo,monospace;font-size:12px;min-height:28px}
+  .composer .bal-opts input{width:16px;height:16px;accent-color:var(--terra)}
   .composer .keepwrap{display:flex;align-items:center;gap:8px}
   .composer .keepwrap label{margin:0}
-  .composer .submit{border:0;background:var(--terra);color:#fff;padding:13px 26px;font-size:15px;font-weight:500;cursor:pointer;border-radius:4px;justify-self:start}
+  .composer .keepwrap input{width:16px;height:16px;accent-color:var(--terra)}
+  .composer .submit{border:0;background:var(--terra);color:#fff;padding:13px 26px;min-height:44px;font-size:15px;font-weight:500;cursor:pointer;border-radius:4px;justify-self:start}
   .composer .submit:hover{background:var(--cream);color:var(--navy)}
   .composer .submit:disabled{opacity:.6;cursor:wait}
   .msg{margin:0;font-size:13px;min-height:1.2em}
@@ -88,21 +96,21 @@
   .msg.err{color:#F1B0A0}
 
   /* List */
-  .liste{margin-top:44px}
+  .liste{margin-top:40px}
   .liste-head{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between;border-bottom:1.5px solid var(--navy);padding-bottom:12px}
   .liste-head .tools{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--ink-soft)}
-  .liste-head select{padding:7px 10px;border:1px solid var(--line);background:var(--white);border-radius:4px;font-size:13px}
-  ul.cards{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
-  .card{background:var(--white);border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:10px}
-  .card:hover{border-color:var(--navy)}
+  .liste-head select{padding:9px 10px;min-height:40px;border:1px solid var(--line);background:var(--white);border-radius:4px;font-size:13px}
+  ul.cards{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:2px;padding:20px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow-1);transition:border-color .15s ease,box-shadow .15s ease}
+  .card:hover{border-color:var(--navy);box-shadow:var(--shadow-2)}
   .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
   .card .type{font:600 11px/1 inherit;letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
-  .card h3{margin:0;font-size:16px;line-height:1.25}
+  .card h3{margin:0;font-size:16px;font-weight:600;line-height:1.25}
   .card p.desc{margin:0;font-size:13.5px;color:var(--ink-soft)}
   .card .bals{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:6px}
   .card .bal{background:#EFEDE7;color:var(--navy);padding:4px 8px;font:400 11px/1 ui-monospace,Menlo,monospace}
   .card .meta{margin:0;padding-top:8px;border-top:1px solid #EFEDE7;font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
-  .fav{width:30px;height:30px;flex:none;border:1px solid var(--line);background:var(--white);color:#9AA3AC;cursor:pointer;font-size:15px;line-height:1;border-radius:4px}
+  .fav{width:36px;height:36px;flex:none;border:1px solid var(--line);background:var(--white);color:#6E7A87;cursor:pointer;font-size:16px;line-height:1;border-radius:4px}
   .fav[aria-pressed="true"]{background:var(--terra);border-color:var(--terra);color:#fff}
   .fav:hover{border-color:var(--terra)}
   .empty{margin:24px 0 0;padding:24px;background:var(--white);border:1px dashed #C4C0B6;color:var(--ink-soft)}
@@ -134,7 +142,6 @@
     <div id="ui" hidden>
       <div class="grid-top">
         <section aria-labelledby="hero-t">
-          <p class="kicker">Recherche</p>
           <h1 id="hero-t">Que cherches-tu&nbsp;?</h1>
           <p class="lead">Tout ce que l’équipe partage est rassemblé ici : articles, docs techniques, charte, outils. Balisé, historisé, retrouvable.</p>
           <div class="searchbar">
@@ -147,8 +154,8 @@
           </div>
         </section>
 
-        <section class="composer" aria-labelledby="comp-t">
-          <h2 id="comp-t">Partager une ressource</h2>
+        <details class="composer" open aria-labelledby="comp-t">
+          <summary><h2 id="comp-t">Partager une ressource</h2></summary>
           <form id="form" novalidate>
             <div>
               <label for="f-titre">Titre</label>
@@ -177,10 +184,10 @@
               <input type="checkbox" id="f-perso" name="perso">
               <label for="f-perso">Garder dans mon espace personnel</label>
             </div>
-            <button type="submit" class="submit">Envoyer</button>
+            <button type="submit" class="submit">Publier la ressource</button>
             <p class="msg" id="form-msg" role="status" aria-live="polite"></p>
           </form>
-        </section>
+        </details>
       </div>
 
       <section class="liste" id="liste" tabindex="-1" aria-labelledby="liste-t">
