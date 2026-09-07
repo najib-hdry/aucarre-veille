@@ -34,15 +34,25 @@ Le widget n'a pas accès à l'identité Grist du visiteur : un sélecteur
 options du widget (`meId`). À remplacer par une vraie identification si l'outil
 sort de Grist.
 
-## Mettre à jour le code déployé
+## Déploiement
+
+Le widget est servi par **GitHub Pages** depuis `docs/index.html` (concaténation
+autoportante de `_html.html` + `_js.js` + `grist-plugin-api.js`).
+
+**URL à coller dans Grist** (widget personnalisé → URL, accès *Full*) :
 
 ```
-# via MCP Grist (widget_id = 17 sur la page « Veille »)
-grist_set_custom_widget_options(doc_id=<JDR>, widget_id=17,
-  options={ "_js": "<contenu de _js.js>" })          # ou "_html"
+https://najib-hdry.github.io/aucarre-veille/
 ```
 
-Le rendu se met à jour en direct, sans recharger.
+### Mettre à jour
+
+1. modifier `widget/_html.html` et/ou `widget/_js.js`
+2. régénérer : `bash build.sh` (ou reconcaténer dans `docs/index.html`)
+3. `git commit` + `git push` → GitHub Pages rebâtit en ~1 min
+
+Alternative sans hébergement : Custom Widget Builder + `grist_set_custom_widget_options`
+(clés `_html` / `_js`), rendu live mais code stocké dans le document.
 
 ## Limites connues
 
