@@ -36,23 +36,26 @@ sort de Grist.
 
 ## Déploiement
 
-Le widget est servi par **GitHub Pages** depuis `docs/index.html` (concaténation
-autoportante de `_html.html` + `_js.js` + `grist-plugin-api.js`).
+Deux voies possibles, même source (`_html.html` + `_js.js`) :
 
-**URL à coller dans Grist** (widget personnalisé → URL, accès *Full*) :
+### A. Code intégré au document Grist *(en place actuellement)*
+
+Widget « Custom Widget Builder » (`@berhalak/custom-widget-builder`) sur la page
+**Veille**, `widget_id 17`, accès **Full**. Le code est stocké dans le document
+(options `_html` / `_js`). Mise à jour : recopier le contenu des deux fichiers via
+`grist_set_custom_widget_options`. Rendu live, aucune dépendance externe.
+
+### B. Hébergé sur GitHub Pages
+
+`docs/index.html` = concaténation autoportante de `_html.html` + `_js.js` +
+`grist-plugin-api.js`. URL à coller dans Grist (widget personnalisé → URL,
+accès *Full*) :
 
 ```
 https://najib-hdry.github.io/aucarre-veille/
 ```
 
-### Mettre à jour
-
-1. modifier `widget/_html.html` et/ou `widget/_js.js`
-2. régénérer : `bash build.sh` (ou reconcaténer dans `docs/index.html`)
-3. `git commit` + `git push` → GitHub Pages rebâtit en ~1 min
-
-Alternative sans hébergement : Custom Widget Builder + `grist_set_custom_widget_options`
-(clés `_html` / `_js`), rendu live mais code stocké dans le document.
+Mise à jour : `bash build.sh`, puis `git commit` + `git push` → Pages rebâtit en ~1 min.
 
 ## Limites connues
 
