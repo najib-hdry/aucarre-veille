@@ -29,6 +29,19 @@ Référentiel : checklist gstack `/design-review` + RGAA 4.1.
 | 7 | Eyebrow « RECHERCHE » au-dessus du h1 : redondant, et privé de sa police mono d'origine il ne signifiait plus rien. | Supprimé. |
 | 8 | Bouton « Envoyer » peu explicite. | « Publier la ressource ». Apostrophes typographiques. |
 
+## 2ᵉ passe (revue contre la maquette hi-fi)
+
+| # | Constat | Correction |
+|---|---|---|
+| 9 | Favori rendu avec le glyphe `★` (dingbat) — se recolore mal, taille incohérente. | Étoile **SVG** (contour / plein), hérite de `currentColor`. |
+| 10 | Bouton « Effacer » toujours visible dans la barre alors que la recherche est instantanée. | Masqué tant que le champ est vide (`hidden`), réapparaît à la saisie. |
+| 11 | Accueil impersonnel après le retrait du « Bonjour Jessica » de la maquette. | Ligne « Bonjour {prénom}, » réintroduite (mono, teal), alimentée par le sélecteur d'utilisateur. |
+| 12 | Libellés éditoriaux (type de carte, « Balises », méta auteur/date) en sans-serif → perdent le signal de la charte. | Passés en `--mono` (pile avec IBM Plex Mono en tête). |
+| 13 | Hairlines incohérentes (`#EFEDE7`, `#DFDCD4`, `#C4C0B6`, `#D5D1C8` mélangés). | Deux jetons : `--line` (bordures) et `--hair` (filets internes / fonds de balise). |
+| 14 | Coins de carte à 2 px (ni francs ni ronds) ; `.brand .sub` encombre l'en-tête étroit. | Cartes à angle franc ; `.sub` masqué < 640 px. |
+| 15 | Liens de carte ouvrant un nouvel onglet sans indication (RGAA 3.1). | `title` + mention lecteur d'écran « (nouvel onglet) ». |
+| 16 | Contrôles de formulaire natifs non calés sur un thème. | `color-scheme:light` sur `.app`. |
+
 ## Écarts assumés
 
 - **Police système** (`-apple-system…`) au lieu de DM Sans / IBM Plex Mono de la

@@ -101,10 +101,13 @@ function buildOnce() {
     });
   });
 
-  // recherche
+  // recherche (live, avec bouton d'effacement conditionnel)
   const q = $("#q");
-  q.addEventListener("input", debounce(() => { state.query = q.value.trim().toLowerCase(); render(); }, 180));
-  $("#q-clear").addEventListener("click", () => { q.value = ""; state.query = ""; render(); q.focus(); });
+  const runSearch = debounce(() => { state.query = q.value.trim().toLowerCase(); render(); }, 180);
+  q.addEventListener("input", () => { $("#q-clear").hidden = !q.value; runSearch(); });
+  $("#q-clear").addEventListener("click", () => {
+    q.value = ""; state.query = ""; $("#q-clear").hidden = true; render(); q.focus();
+  });
 
   // tri
   $("#sort").addEventListener("change", e => { state.sort = e.target.value; render(); });
@@ -159,10 +162,22 @@ function visibleRows() {
   return rows;
 }
 
+// étoile favori en SVG (pas de glyphe dingbat) — hérite de currentColor
+function starSvg(filled) {
+  return '<svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false">' +
+    '<path d="M12 3.5l2.6 5.7 6.2.7-4.6 4.2 1.2 6.1L12 17.9 6.3 20.9l1.2-6.1L2.9 10l6.2-.7z" ' +
+    'fill="' + (filled ? "currentColor" : "none") + '" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+}
+
 function render() {
   const labels = { Commun: "Espace commun", Personnel: "Mon espace personnel", Favoris: "Mes favoris" };
   $("#liste-t").textContent = labels[state.space];
   $("#me-select").value = state.meId;
+
+  const meU = currentUser();
+  const hello = $("#hello");
+  if (meU && meU.Nom) { hello.textContent = "Bonjour " + meU.Nom.split(" ")[0] + ","; hello.hidden = false; }
+  else { hello.hidden = true; }
 
   const balName = new Map(state.B.map(b => [b.id, b.Nom]));
   const usrName = new Map(state.U.map(u => [u.id, u.Nom]));
@@ -183,10 +198,10 @@ function render() {
       <div class="top">
         <span class="type">${esc(r.Type || "Ressource")}</span>
         <button type="button" class="fav" aria-pressed="${isFav}"
-          aria-label="${isFav ? "Retirer des favoris" : "Ajouter aux favoris"} : ${esc(r.Titre)}">★</button>
+          aria-label="${isFav ? "Retirer des favoris" : "Ajouter aux favoris"} : ${esc(r.Titre)}">${starSvg(isFav)}</button>
       </div>
       <h3>${r.Lien
-        ? `<a href="${esc(r.Lien)}" target="_blank" rel="noopener">${esc(r.Titre)}</a>`
+        ? `<a href="${esc(r.Lien)}" target="_blank" rel="noopener" title="Ouvrir dans un nouvel onglet">${esc(r.Titre)}<span class="visually-hidden"> (nouvel onglet)</span></a>`
         : esc(r.Titre)}</h3>
       <p class="desc">${esc(r.Description || "")}</p>
       <div class="bals">${refIds(r.Balises).map(id =>
