@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <style>
+    :root{
+      --navy:#12202F; --cream:#F6F5F1; --paper:#FFFFFF;
+      --peach:#E7A08C; --teal:#146062;
+      --ink:#12202F; --ink-soft:#46535F; --ink-mute:#5B6873;
+      --line:#DDD8CE; --field:#1A2C3E;
+      --mono:'IBM Plex Mono','SFMono-Regular',ui-monospace,Menlo,monospace;
+      --sans:'DM Sans','Segoe UI',system-ui,-apple-system,Helvetica,Arial,sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+    a{color:var(--teal);text-underline-offset:3px}
+    a:hover{color:#C34A2C}
+    .eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin:0}
+  </style>
+</helmet>
+
+<div style="width:1440px;min-height:1860px;background:var(--cream)">
+
+  <!-- ============ HEADER ============ -->
+  <header style="background:var(--navy);color:var(--cream);padding:0 56px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:40px;height:80px">
+      <div style="display:flex;align-items:center;gap:14px">
+        <span style="display:grid;grid-template-columns:9px 9px;grid-template-rows:9px 9px;gap:3px">
+          <i style="background:var(--cream)"></i><i style="background:#C34A2C"></i>
+          <i style="background:#C34A2C"></i><i style="background:var(--cream)"></i>
+        </span>
+        <span style="font-weight:700;font-size:18px;letter-spacing:-.01em">au carré</span>
+        <span style="width:1px;height:22px;background:rgba(246,245,241,.24)"></span>
+        <span style="font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9FB0BC">Ressources projet</span>
+      </div>
+
+      <nav style="display:flex;gap:6px" aria-label="Espaces">
+        <span style="padding:10px 18px;font-size:14px;font-weight:500;background:{{accent}};color:#fff">Espace commun</span>
+        <span style="padding:10px 18px;font-size:14px;border:1.5px solid rgba(246,245,241,.28);color:var(--cream)">Espace personnel</span>
+        <span style="padding:10px 18px;font-size:14px;border:1.5px solid rgba(246,245,241,.28);color:var(--cream)">Favoris</span>
+      </nav>
+
+      <div style="display:flex;align-items:center;gap:12px">
+        <span style="font-family:var(--mono);font-size:12px;color:#9FB0BC">Jessica&nbsp;Martin</span>
+        <span style="width:40px;height:40px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;font-family:var(--mono)">JM</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MAIN ============ -->
+  <main style="padding:52px 56px 0">
+
+    <!-- top grid : search + composer -->
+    <div style="display:grid;grid-template-columns:1.28fr 1fr;gap:56px;align-items:start">
+
+      <!-- search column -->
+      <section style="display:flex;flex-direction:column;gap:0">
+        <p class="eyebrow">Recherche</p>
+        <h1 style="font-family:var(--sans);font-weight:700;font-size:42px;line-height:1.06;letter-spacing:-.03em;margin:10px 0 0;max-width:15ch;text-wrap:balance">Bonjour Jessica, que cherches-tu aujourd’hui&nbsp;?</h1>
+        <p style="font-size:16px;line-height:1.6;color:var(--ink-soft);margin:16px 0 0;max-width:46ch;text-wrap:pretty">Tout ce que l’équipe partage dans Slack est rassemblé ici : articles, docs techniques, charte graphique, outils. Balisé, historisé, retrouvable.</p>
+
+        <div style="display:flex;align-items:center;gap:10px;background:var(--paper);border:1.5px solid var(--navy);border-radius:999px;padding:6px 6px 6px 22px;margin-top:26px">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5B6873" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.6-3.6"></path></svg>
+          <span style="flex:1;font-family:var(--mono);font-size:14px;color:#6E7A87;padding:12px 0">titre, mot-clé, balise, auteur…</span>
+          <span style="background:var(--navy);color:var(--cream);border-radius:999px;padding:13px 28px;font-size:15px;font-weight:500">Rechercher</span>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:20px">
+          <span style="font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);margin-right:4px">Balises</span>
+          <span style="font-family:var(--mono);font-size:12.5px;padding:7px 12px;background:var(--navy);color:var(--cream)">#rgaa</span>
+          <span style="font-family:var(--mono);font-size:12.5px;padding:7px 12px;background:var(--paper);border:1px solid var(--line)">#eco-conception</span>
+          <span style="font-family:var(--mono);font-size:12.5px;padding:7px 12px;background:var(--paper);border:1px solid var(--line)">#design</span>
+          <span style="font-family:var(--mono);font-size:12.5px;padding:7px 12px;background:var(--paper);border:1px solid var(--line)">#process</span>
+          <span style="font-family:var(--mono);font-size:12.5px;padding:7px 12px;background:var(--paper);border:1px solid var(--line)">#no-code</span>
+          <span style="font-family:var(--mono);font-size:12.5px;padding:7px 12px;background:var(--paper);border:1px solid var(--line)">#grist</span>
+          <span style="font-family:var(--mono);font-size:12.5px;padding:7px 12px;background:var(--paper);border:1px solid var(--line)">#veille</span>
+        </div>
+      </section>
+
+      <!-- composer -->
+      <section style="background:var(--navy);color:var(--cream);padding:32px">
+        <p style="font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--peach);margin:0">Partager</p>
+        <h2 style="font-family:var(--sans);font-weight:700;font-size:23px;line-height:1.2;letter-spacing:-.02em;margin:8px 0 0">Quelle ressource souhaites-tu partager&nbsp;?</h2>
+
+        <div style="display:flex;flex-direction:column;gap:16px;margin-top:24px">
+          <label style="display:flex;flex-direction:column;gap:7px">
+            <span style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9FB0BC">Titre</span>
+            <span style="border:1px solid rgba(246,245,241,.32);background:var(--field);padding:12px 14px;font-size:14px;color:#8B97A3">Guide RGAA 4.1 — critères clés</span>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px">
+            <span style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9FB0BC">Description</span>
+            <span style="border:1px solid rgba(246,245,241,.32);background:var(--field);padding:12px 14px;font-size:14px;color:#8B97A3;min-height:64px">Pourquoi c’est utile à l’équipe, en une phrase.</span>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:7px">
+            <span style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9FB0BC">Lien</span>
+            <span style="border:1px solid rgba(246,245,241,.32);background:var(--field);padding:12px 14px;font-size:14px;color:#8B97A3">https://</span>
+          </label>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <span style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9FB0BC">Balises</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <span style="border:1px solid rgba(246,245,241,.32);padding:6px 11px;font-family:var(--mono);font-size:12px;color:#C9CFD6">+ balise</span>
+              <span style="border:1px solid var(--peach);color:var(--peach);padding:6px 11px;font-family:var(--mono);font-size:12px">rgaa</span>
+              <span style="border:1px solid var(--peach);color:var(--peach);padding:6px 11px;font-family:var(--mono);font-size:12px">a11y</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;margin-top:6px">
+            <span style="background:{{accent}};color:#fff;padding:14px 30px;font-size:15px;font-weight:500">Publier la ressource</span>
+            <span style="display:flex;align-items:center;gap:9px;font-size:12.5px;color:#9FB0BC">
+              <span style="width:15px;height:15px;border:1.5px solid #6E7A87;display:inline-block"></span>
+              Garder en espace personnel
+            </span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============ LISTE ============ -->
+    <section style="margin-top:64px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;border-bottom:1.5px solid var(--navy);padding-bottom:14px">
+        <div>
+          <p class="eyebrow">Veille de l’équipe</p>
+          <h2 style="font-family:var(--sans);font-weight:700;font-size:26px;letter-spacing:-.02em;margin:6px 0 0">Espace commun</h2>
+        </div>
+        <p style="font-family:var(--mono);font-size:13px;color:var(--ink-soft);margin:0">09 ressources · historisé</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:26px">
+
+        <!-- card -->
+        <article style="background:var(--paper);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 2px rgba(18,32,47,.05)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)">Article</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA3AC" stroke-width="1.6" aria-hidden="true"><path d="M12 3.5l2.6 5.7 6.2.7-4.6 4.2 1.2 6.1L12 17.9 6.3 20.9l1.2-6.1L2.9 10l6.2-.7z"></path></svg>
+          </div>
+          <h3 style="font-family:var(--sans);font-weight:600;font-size:17px;line-height:1.28;margin:0">Étude OPIIEC 2026 : no-code &amp; low-code</h3>
+          <p style="font-size:13.5px;line-height:1.55;color:var(--ink-soft);margin:0">Chiffres sur les besoins en compétences en France. Utile pour nos supports d’avant-vente.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px">
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#veille</span>
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#no-code</span>
+          </div>
+          <p style="display:flex;justify-content:space-between;gap:10px;margin:0;padding-top:10px;border-top:1px solid #EFEBE3;font-family:var(--mono);font-size:11.5px;color:var(--ink-mute)">
+            <span>Karim Benali</span><span>18 août</span>
+          </p>
+        </article>
+
+        <article style="background:var(--paper);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 2px rgba(18,32,47,.05)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)">Doc technique</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA3AC" stroke-width="1.6" aria-hidden="true"><path d="M12 3.5l2.6 5.7 6.2.7-4.6 4.2 1.2 6.1L12 17.9 6.3 20.9l1.2-6.1L2.9 10l6.2-.7z"></path></svg>
+          </div>
+          <h3 style="font-family:var(--sans);font-weight:600;font-size:17px;line-height:1.28;margin:0">Conventions de nommage Grist</h3>
+          <p style="font-size:13.5px;line-height:1.55;color:var(--ink-soft);margin:0">Comment on structure les tables et les colonnes sur les projets clients.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px">
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#grist</span>
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#process</span>
+          </div>
+          <p style="display:flex;justify-content:space-between;gap:10px;margin:0;padding-top:10px;border-top:1px solid #EFEBE3;font-family:var(--mono);font-size:11.5px;color:var(--ink-mute)">
+            <span>Jessica Martin</span><span>14 août</span>
+          </p>
+        </article>
+
+        <article style="background:var(--paper);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 2px rgba(18,32,47,.05)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)">Charte</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="{{accent}}" stroke="{{accent}}" stroke-width="1.6" aria-hidden="true"><path d="M12 3.5l2.6 5.7 6.2.7-4.6 4.2 1.2 6.1L12 17.9 6.3 20.9l1.2-6.1L2.9 10l6.2-.7z"></path></svg>
+          </div>
+          <h3 style="font-family:var(--sans);font-weight:600;font-size:17px;line-height:1.28;margin:0">Charte graphique au carré v3</h3>
+          <p style="font-size:13.5px;line-height:1.55;color:var(--ink-soft);margin:0">Palette, typographies, usage du logo et des carrés. Fichier source inclus.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px">
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#design</span>
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#marque</span>
+          </div>
+          <p style="display:flex;justify-content:space-between;gap:10px;margin:0;padding-top:10px;border-top:1px solid #EFEBE3;font-family:var(--mono);font-size:11.5px;color:var(--ink-mute)">
+            <span>Léa Dupont</span><span>11 août</span>
+          </p>
+        </article>
+
+        <article style="background:var(--paper);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 2px rgba(18,32,47,.05)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)">Outil</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA3AC" stroke-width="1.6" aria-hidden="true"><path d="M12 3.5l2.6 5.7 6.2.7-4.6 4.2 1.2 6.1L12 17.9 6.3 20.9l1.2-6.1L2.9 10l6.2-.7z"></path></svg>
+          </div>
+          <h3 style="font-family:var(--sans);font-weight:600;font-size:17px;line-height:1.28;margin:0">Checklist RGAA 4.1 allégée</h3>
+          <p style="font-size:13.5px;line-height:1.55;color:var(--ink-soft);margin:0">Les 40 critères qu’on vérifie systématiquement avant une livraison.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px">
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#rgaa</span>
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#a11y</span>
+          </div>
+          <p style="display:flex;justify-content:space-between;gap:10px;margin:0;padding-top:10px;border-top:1px solid #EFEBE3;font-family:var(--mono);font-size:11.5px;color:var(--ink-mute)">
+            <span>Sofiane Amrani</span><span>9 août</span>
+          </p>
+        </article>
+
+        <article style="background:var(--paper);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 2px rgba(18,32,47,.05)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)">Tip</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="{{accent}}" stroke="{{accent}}" stroke-width="1.6" aria-hidden="true"><path d="M12 3.5l2.6 5.7 6.2.7-4.6 4.2 1.2 6.1L12 17.9 6.3 20.9l1.2-6.1L2.9 10l6.2-.7z"></path></svg>
+          </div>
+          <h3 style="font-family:var(--sans);font-weight:600;font-size:17px;line-height:1.28;margin:0">Réduire le poids d’une page de 60&nbsp;%</h3>
+          <p style="font-size:13.5px;line-height:1.55;color:var(--ink-soft);margin:0">Trois réflexes d’éco-conception appliqués sur le projet DINUM.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px">
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#eco-conception</span>
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#perf</span>
+          </div>
+          <p style="display:flex;justify-content:space-between;gap:10px;margin:0;padding-top:10px;border-top:1px solid #EFEBE3;font-family:var(--mono);font-size:11.5px;color:var(--ink-mute)">
+            <span>Jessica Martin</span><span>5 août</span>
+          </p>
+        </article>
+
+        <article style="background:var(--paper);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 2px rgba(18,32,47,.05)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)">Article</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA3AC" stroke-width="1.6" aria-hidden="true"><path d="M12 3.5l2.6 5.7 6.2.7-4.6 4.2 1.2 6.1L12 17.9 6.3 20.9l1.2-6.1L2.9 10l6.2-.7z"></path></svg>
+          </div>
+          <h3 style="font-family:var(--sans);font-weight:600;font-size:17px;line-height:1.28;margin:0">Écrire des messages Slack qui se retrouvent</h3>
+          <p style="font-size:13.5px;line-height:1.55;color:var(--ink-soft);margin:0">Format court : contexte, lien, balise. Base de notre collecte automatique.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px">
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#process</span>
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#slack</span>
+          </div>
+          <p style="display:flex;justify-content:space-between;gap:10px;margin:0;padding-top:10px;border-top:1px solid #EFEBE3;font-family:var(--mono);font-size:11.5px;color:var(--ink-mute)">
+            <span>Amel Khaled</span><span>2 août</span>
+          </p>
+        </article>
+
+        <article style="background:var(--paper);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 2px rgba(18,32,47,.05)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)">Doc technique</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA3AC" stroke-width="1.6" aria-hidden="true"><path d="M12 3.5l2.6 5.7 6.2.7-4.6 4.2 1.2 6.1L12 17.9 6.3 20.9l1.2-6.1L2.9 10l6.2-.7z"></path></svg>
+          </div>
+          <h3 style="font-family:var(--sans);font-weight:600;font-size:17px;line-height:1.28;margin:0">Gabarits d’export accessibles</h3>
+          <p style="font-size:13.5px;line-height:1.55;color:var(--ink-soft);margin:0">Modèles PDF et HTML testés au lecteur d’écran.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px">
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#rgaa</span>
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#design</span>
+          </div>
+          <p style="display:flex;justify-content:space-between;gap:10px;margin:0;padding-top:10px;border-top:1px solid #EFEBE3;font-family:var(--mono);font-size:11.5px;color:var(--ink-mute)">
+            <span>Léa Dupont</span><span>29 juillet</span>
+          </p>
+        </article>
+
+        <article style="background:var(--paper);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 2px rgba(18,32,47,.05)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)">Outil</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA3AC" stroke-width="1.6" aria-hidden="true"><path d="M12 3.5l2.6 5.7 6.2.7-4.6 4.2 1.2 6.1L12 17.9 6.3 20.9l1.2-6.1L2.9 10l6.2-.7z"></path></svg>
+          </div>
+          <h3 style="font-family:var(--sans);font-weight:600;font-size:17px;line-height:1.28;margin:0">Bibliothèque de composants low-code</h3>
+          <p style="font-size:13.5px;line-height:1.55;color:var(--ink-soft);margin:0">Blocs réutilisables validés contraste et navigation clavier.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px">
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#design</span>
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#no-code</span>
+          </div>
+          <p style="display:flex;justify-content:space-between;gap:10px;margin:0;padding-top:10px;border-top:1px solid #EFEBE3;font-family:var(--mono);font-size:11.5px;color:var(--ink-mute)">
+            <span>Karim Benali</span><span>24 juillet</span>
+          </p>
+        </article>
+
+        <article style="background:var(--paper);border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 2px rgba(18,32,47,.05)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <span style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)">Tip</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA3AC" stroke-width="1.6" aria-hidden="true"><path d="M12 3.5l2.6 5.7 6.2.7-4.6 4.2 1.2 6.1L12 17.9 6.3 20.9l1.2-6.1L2.9 10l6.2-.7z"></path></svg>
+          </div>
+          <h3 style="font-family:var(--sans);font-weight:600;font-size:17px;line-height:1.28;margin:0">Cadrer un projet en 45 minutes</h3>
+          <p style="font-size:13.5px;line-height:1.55;color:var(--ink-soft);margin:0">Trame d’atelier quand la contrainte de temps est forte.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px">
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#process</span>
+            <span style="background:#EFEBE3;padding:4px 9px;font-family:var(--mono);font-size:11px">#veille</span>
+          </div>
+          <p style="display:flex;justify-content:space-between;gap:10px;margin:0;padding-top:10px;border-top:1px solid #EFEBE3;font-family:var(--mono);font-size:11.5px;color:var(--ink-mute)">
+            <span>Sofiane Amrani</span><span>21 juillet</span>
+          </p>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="margin-top:56px;border-top:1.5px solid var(--navy);background:#EDE9E0">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding:26px 56px;font-family:var(--mono);font-size:12px;color:var(--ink-soft)">
+      <span style="letter-spacing:.08em;text-transform:uppercase">Synchronisé depuis Slack · dernière collecte il y a 12 min</span>
+      <span style="display:flex;gap:24px">
+        <a href="#">Accessibilité RGAA</a>
+        <a href="#">Éco-conception</a>
+        <a href="#">Doc technique</a>
+      </span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"$preview":{"width":1440,"height":1920},"accent":{"editor":"color","default":"#C34A2C","options":["#C34A2C","#12202F","#146062","#B4451F"]}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#C34A2C' };
+  }
+}
+</script>
+</body>
+</html>
