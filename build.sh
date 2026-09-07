@@ -16,7 +16,10 @@ cd "$(dirname "$0")"
 </head>
 <body>
 HTML
-  cat widget/_html.html
+  # <style> ... on insère les @font-face auto-hébergés juste après l'ouverture
+  head -n 1 widget/_html.html
+  cat widget/_fonts.css
+  tail -n +2 widget/_html.html
   echo '<script>'
   cat widget/_js.js
   echo '</script>'

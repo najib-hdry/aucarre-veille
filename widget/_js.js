@@ -175,18 +175,20 @@ function render() {
   $("#me-select").value = state.meId;
 
   const meU = currentUser();
-  const hello = $("#hello");
-  if (meU && meU.Nom) { hello.textContent = "Bonjour " + meU.Nom.split(" ")[0] + ","; hello.hidden = false; }
-  else { hello.hidden = true; }
+  const prenom = meU && meU.Nom ? meU.Nom.split(" ")[0] : "";
+  $("#hero-t").textContent = prenom
+    ? "Bonjour " + prenom + ", que cherches-tu aujourd’hui ?"
+    : "Que cherches-tu aujourd’hui ?";
 
   const balName = new Map(state.B.map(b => [b.id, b.Nom]));
   const usrName = new Map(state.U.map(u => [u.id, u.Nom]));
   const favs = myFavIds();
   const rows = visibleRows();
 
+  const n = rows.length;
   $("#count").textContent =
-    rows.length + (rows.length > 1 ? " ressources" : " ressource") +
-    (state.tag ? " · #" + balName.get(state.tag) : "");
+    (n < 10 ? "0" + n : n) + (n > 1 ? " ressources" : " ressource") +
+    (state.tag ? " · #" + balName.get(state.tag) : "") + " · historisé";
 
   const ul = $("#cards");
   ul.innerHTML = "";

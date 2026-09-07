@@ -34,28 +34,42 @@ Le widget n'a pas accès à l'identité Grist du visiteur : un sélecteur
 options du widget (`meId`). À remplacer par une vraie identification si l'outil
 sort de Grist.
 
-## Déploiement
+## Sources
 
-Deux voies possibles, même source (`_html.html` + `_js.js`) :
+| Fichier | Rôle |
+|---|---|
+| `_html.html` | gabarit + styles |
+| `_js.js` | logique |
+| `_fonts.css` | `@font-face` auto-hébergés (DM Sans + IBM Plex Mono, sous-ensemble latin, base64) — généré, ~90 Ko |
 
-### A. Code intégré au document Grist *(en place actuellement)*
+`bash build.sh` assemble les trois en `docs/index.html` (autoportant, avec `grist-plugin-api.js`).
 
-Widget « Custom Widget Builder » (`@berhalak/custom-widget-builder`) sur la page
-**Veille**, `widget_id 17`, accès **Full**. Le code est stocké dans le document
-(options `_html` / `_js`). Mise à jour : recopier le contenu des deux fichiers via
-`grist_set_custom_widget_options`. Rendu live, aucune dépendance externe.
+## Déploiement *(en place)*
 
-### B. Hébergé sur GitHub Pages
-
-`docs/index.html` = concaténation autoportante de `_html.html` + `_js.js` +
-`grist-plugin-api.js`. URL à coller dans Grist (widget personnalisé → URL,
-accès *Full*) :
+Widget « Custom Widget Builder » sur la page **Veille**, `widget_id 17`, accès **Full**,
+pointé sur l'URL **GitHub Pages** :
 
 ```
 https://najib-hdry.github.io/aucarre-veille/
 ```
 
-Mise à jour : `bash build.sh`, puis `git commit` + `git push` → Pages rebâtit en ~1 min.
+Les polices de la charte étant inlinées (~90 Ko), l'hébergement Pages (chargé une
+fois puis mis en cache) est préférable au stockage dans le document Grist.
+
+Mise à jour : modifier `_html.html` / `_js.js`, `bash build.sh`, `git push` →
+Pages rebâtit en ~1 min.
+
+### Variante sans hébergement
+
+Repointer le widget sur le Custom Widget Builder et coller `_html.html` (fonts
+comprises) + `_js.js` dans les options `_html` / `_js` via
+`grist_set_custom_widget_options`. Rendu live, mais alourdit le document.
+
+## Régénérer `_fonts.css`
+
+Télécharger les woff2 latin depuis Google Fonts (DM Sans variable, IBM Plex Mono
+400/500) et les encoder en base64 dans des règles `@font-face` (licence OFL,
+redistribution autorisée). Aucune requête runtime vers un CDN (RGPD).
 
 ## Limites connues
 
